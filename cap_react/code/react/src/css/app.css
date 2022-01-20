@@ -1,0 +1,88 @@
+.app{
+    background-color: white;
+    overflow: hidden;
+    border-radius:10px;
+}
+
+.header {
+    background-color: #00264e;
+}
+
+
+.listed-button{
+    color:inherit;
+}
+
+.default-color{
+    color:inherit;
+}
+
+.listed-button:hover{
+    background-color: var(--light) !important;
+}
+
+.comment {
+    background-color: var(--light);
+    border-radius:5px;
+}
+
+body {
+    background-color: var(--light);
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+    background-color:rgba(0,0,0,0.5) !important
+}
+
+.modal--open{
+    opacity:1;
+    transform:translateY(10%);
+}
+
+.modal--closed, .modal--opening{
+    opacity:0;
+    transform:translateY(-100%);
+}
+
+.modal{
+    right:auto;
+    bottom:auto;
+    width:60%;
+    min-width:60%;
+    max-width:50%;
+    max-height: 80vh;
+    height:auto;
+    border-radius:8px;
+    border: solid 2px var(--light);
+    padding:1rem;
+    overflow-y: auto;
+    margin-left:20%;
+    display:block !important;
+    background-color:white;
+    transition:all 0.3s ease-out;
+}
+
+.modal-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index:1;
+    background-color:rgba(0,0,0,0.5)
+}
+
+.fade-enter{
+    opacity:0;
+}
+.fade-enter-active{
+    opacity:1;
+    transition: all 0.5s ease-out;
+}
+.fade-exit{
+    opacity:1;
+}
+.fade-exit-active{
+    opacity:0;
+    transition: all 0.5s ease-out;
+}
