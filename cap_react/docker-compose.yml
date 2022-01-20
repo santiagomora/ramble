@@ -5,7 +5,7 @@ services:
                 container_name: cap_react_frontend
                 user: "node"
                 working_dir: /home/node/app
-                command: "npm start"
+                entrypoint: ["./start.sh"]
                 depends_on:
                         - cap_node_backend
                 environment:
@@ -22,7 +22,7 @@ services:
                 container_name: cap_node_backend
                 user: "node"
                 working_dir: /home/node/app
-                command: "npm run dev"
+                entrypoint: ["./start.sh"]
                 depends_on:
                         - cap_mongo_db
                 environment:

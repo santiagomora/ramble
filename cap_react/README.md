@@ -1,12 +1,10 @@
-CONFIGURE:
-there's a compressed file mongo.tar.gz. run:
-sudo tar -xvf mongodb.tar.gz
 
+- there's a compressed file mongodb.tar.gz. run: sudo tar -xvf mongodb.tar.gz
 
-BOOT: 
-docker-compose up -d 
+- give execute permissions to both start scripts in code/express and code/react: sudo chmod +x start.sh
 
-will serve at localhost:3000
+- rename .env.example files to .env in this directory and code/express directory
 
-test user: test1@gmail.com
-test password: password
+- docker-compose up -d. will serve at localhost:3000
+
+- test user: test1@gmail.com. test password: password
