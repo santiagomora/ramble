@@ -1,0 +1,66 @@
+<form action="" 
+    class="container-fluid mb-4" 
+    [formGroup]="formControl">
+    <div class="row">
+        <div class="col-8 offset-2 my-4 container-fluid">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h2 class="font-weight-bolder">
+                        Register
+                    </h2>
+                    <message-outlet-component outletType="inComponent">
+                    </message-outlet-component>
+                </div>
+                <div class="col-12">
+                    <label for="email" 
+                        class="m-0" >
+                        <strong class="ml-2">Email</strong>
+                    </label>
+                    <input 
+                        name="email"
+                        type="text" 
+                        formControlName="email"
+                        class="form-control w-100">
+                    <error-bag [errors]="formControl._errors('email')">
+                    </error-bag>
+                </div>
+                <div class="col-12">
+                    <label for="name" 
+                        class="m-0">
+                        <strong class="ml-2">Name</strong>
+                    </label>
+                    <input 
+                        name="name"
+                        type="text" 
+                        formControlName="name"
+                        class="form-control w-100">
+                    <error-bag [errors]="formControl._errors('name')">
+                    </error-bag>
+                </div>
+                <div class="col-12">
+                    <label for="enabled" 
+                        class="m-0">
+                        <strong class="ml-2">Password</strong>
+                    </label>
+                    <input 
+                        name="password"
+                        formControlName="password"
+                        type="password" 
+                        class="form-control w-100">
+                </div>
+                <div class="col-12 text-right mt-4">
+                    <button
+                        (click)="submit()"
+                        [disabled]="!formControl.valid" 
+                        class="btn btn-primary font-weight-bolder btn-block"
+                        type="submit">
+                        Register!
+                    </button>
+                </div>
+                <div class="col-12 mt-4 text-right">
+                    <a routerLink="">Go back</a> to login.
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

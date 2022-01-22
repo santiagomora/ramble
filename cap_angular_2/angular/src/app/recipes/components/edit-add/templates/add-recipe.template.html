@@ -1,0 +1,14 @@
+<div class="container-fluid p-0">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="font-weight-bolder">Add new Recipe.</h2>
+        </div>
+        <div class="col-12">
+          <message-outlet-component outletType="inComponent">
+          </message-outlet-component>
+          <recipe-form 
+            [submitHandler]="this.addRecipe">
+          </recipe-form>
+        </div>
+    </div>
+  </div>

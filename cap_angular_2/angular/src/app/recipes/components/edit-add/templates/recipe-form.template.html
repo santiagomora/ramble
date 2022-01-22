@@ -1,0 +1,63 @@
+<conditional-component
+    [condition]="formControl&&!loading">
+    <ng-template conditionalContent>
+    <form 
+        [formGroup]="formControl"
+        (submit)="onSubmit($event)" 
+        class="container-fluid p-0">
+            <div class="row">
+                <div class="col-6 mt-2">
+                    <h6 class="font-weight-bolder">Name</h6>
+                    <input 
+                        type="text"
+                        name="name"
+                        class="form-control w-100"
+                        formControlName="name">
+                    <error-bag [errors]="formControl._errors('name')">
+                    </error-bag>
+                    <h6 class="font-weight-bolder">Description</h6>
+                    <textarea 
+                        class="form-control w-100" 
+                        formControlName="description"
+                        rows="4">
+                    </textarea>
+                    <error-bag [errors]="formControl._errors('description')">
+                    </error-bag>
+                </div>
+                <div
+                    style="background-color:var(--light)" 
+                    class="col-6 mt-2 container-fluid p-3" 
+                    formArrayName="ingredients">
+                    <div class="row mb-2">
+                        <div class="col">
+                            <h6 class="m-0 font-weight-bolder">Ingredients</h6>
+                        </div>
+                        <div class="col-auto">
+                            <button 
+                                type="button"
+                                [disabled]="!formControl.validIngredients"
+                                class="px-1 py-0 btn-primary btn btn-block font-weight-bolder"
+                                (click)="formControl.addIngredient()">
+                                Add Ingredient
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <select-ingredients
+                            *ngFor="let ing of formControl._ingredients; let x = index"
+                            [form]="ing"
+                            (deleteIngredient)="formControl.deleteIngredient(x)">
+                        </select-ingredients>
+                    </ul>
+                </div>
+                <div class="col-12 text-right mt-3">
+                    <input
+                        [disabled]="!formControl.valid"
+                        type="submit" 
+                        value="{{isEdit ? 'Save' : 'Create'}}" 
+                        class="font-weight-bolder btn {{isEdit ? 'btn-success' : 'btn-primary'}}">
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</conditional-component>

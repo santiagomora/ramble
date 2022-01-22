@@ -1,0 +1,21 @@
+.headerOutlet{
+
+}
+.topLeftCornerOutlet{
+    position:absolute;
+    z-index:50;
+    right:10px;
+    top:10px;
+}
+.noDisplayOutlet{
+    display:none;
+}
+.inComponent{
+
+}
+.topLeftCornerOutlet .message{
+    opacity:0.5;
+}
+.topLeftCornerOutlet .message:hover{
+    opacity:1;
+}

@@ -1,0 +1,60 @@
+getting started
+---------------
+        We have a main app component, with several files that will dictate the way this component
+    behaves and its dependencies.
+
+    app.component.ts:
+        there is a TS class associated to each component. This class will define the component's
+    binded data (the class properties are variables accesible from within the html structure), 
+    injected services (component inter communication) and data handlers.
+        We can use angular's class decorators to specify attributes for the class. for example,
+    this decorator: 
+
+        @Component({
+            selector: 'app-root',
+            templateUrl: './app.component.html',
+            styleUrls: ['./app.component.css']
+        })
+        class AppComponent {...}
+
+        is telling us that this app component should render inside an app-root component, 
+    has the app.component.html template associated, and uses the styles defined in the styleUrls 
+    array.
+
+    app.component.html:
+        Each component has an html structure associated that will have access to the .component.ts
+    class properties. These html structures also have access to the imports defined in 
+    the .component.spec.ts file.
+
+        <input type="text" [(ngModel)]="name">
+        <!-- 
+            ngModel is a directive that tells angular to listen to any change in the input, and 
+            store it in the name property, the ngModel is part of the FormsModule module
+        -->
+
+    app.component.spec.ts:
+        Testing suite for the app component 
+
+    app.module.ts:
+        This defines the components dependencies 
+        @NgModule({
+            declarations: [
+                AppComponent //declares de app component class, this module's main Component
+            ],
+            imports: [
+                BrowserModule, // default module
+                // AppRoutingModule, // for routing 
+                // here we tell angular we want to import form features and inject them 
+                // into the app component  
+                // FormsModule // we need it if we want to use the NgModule directive
+            ],
+            providers: [
+                // service provider?
+            ],
+            bootstrap: [
+                AppComponent // ?
+            ]
+        })
+        export class AppModule { }
+
+        Bootstraps the component with its dependencies and modules required from angular

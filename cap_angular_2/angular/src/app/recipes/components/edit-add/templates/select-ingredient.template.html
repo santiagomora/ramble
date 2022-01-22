@@ -1,0 +1,94 @@
+<li 
+    class="list-group-item p-2"
+    *ngIf="!showForm; else ingredientForm">
+    <div class="row">
+        <div class="col">
+            <h6 class="font-weight-bolder d-inline">
+                {{getOptionName(form.value.ingredient,form.ingredients)}}
+            </h6>
+        </div>
+        <div class="col-auto text-right">
+            <h6 class="d-inline">×</h6>
+            <h6 class="d-inline">{{form.value.quantity}} <strong>{{getOptionName(form.value.unit,form.units)}}</strong></h6>
+            <button 
+                (click)="deleteIngredient.emit()"
+                class="btn btn-danger ml-2 py-0 font-weight-bolder">
+                delete
+            </button>
+            <button 
+                (click)="toggleForm()"
+                class="btn btn-success ml-2 py-0 font-weight-bolder">
+                edit
+            </button>
+        </div>
+    </div>
+</li>
+<ng-template 
+    #ingredientForm>
+    <li 
+        class="container-fluid p-0 list-group-item" 
+        [formGroup]="form">
+        <div class="row p-2">
+            <div class="col container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="font-weight-bold">Edit ingredient</h6>
+                        <error-bag [errors]="form._errors('ingredient')">
+                        </error-bag>
+                        <error-bag [errors]="form._errors('units')">
+                        </error-bag>
+                        <error-bag [errors]="form._errors('quantity')">
+                        </error-bag>
+                    </div>
+                    <div class="col">
+                        <select 
+                            class="form-control d-inline py-0" 
+                            formControlName="ingredient"
+                            [ngStyle]="{height:'2em'}">
+                            <option 
+                                *ngFor="let ingredient of form.ingredients"
+                                [value]="ingredient._id"
+                                >
+                                {{ingredient.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col pl-0">
+                        <input 
+                            formControlName="quantity"
+                            type="number" 
+                            class="form-control d-inline py-0"
+                            [ngStyle]="{height:'2em'}">
+                    </div>
+                    <div class="col pl-0">
+                        <select 
+                            formControlName="unit"
+                            class="form-control d-inline py-0"
+                            [ngStyle]="{height:'2em'}">
+                            <option 
+                                *ngFor="let unit of form.units"
+                                [value]="unit._id">
+                                {{unit.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-auto pl-0">
+                        <button
+                            (click)="onCancel()"
+                            [ngStyle]="{verticalAlign:'text-top'}"
+                            class="btn px-1 py-0 btn-light font-weight-bolder">
+                            Cancel
+                        </button>
+                        <button
+                            [disabled]="!form.valid"
+                            (click)="saveValue($event)"
+                            [ngStyle]="{verticalAlign:'text-top'}"
+                            class="btn px-1 ml-1 py-0 btn-primary font-weight-bolder">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>  
+</ng-template>

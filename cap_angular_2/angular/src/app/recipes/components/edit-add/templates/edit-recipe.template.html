@@ -1,0 +1,28 @@
+<div class="container-fluid p-0">
+    <div class="row">
+      <div *ngIf="currentRecipe; else noRecipeFound" class="col-12">
+        <h2 class="font-weight-bolder">
+          Edit recipe: <a routerLink="/recipes/{{currentRecipe._id}}">{{currentRecipe.name}}</a>
+        </h2>
+        <div class="col-12 p-0">
+          <message-outlet-component outletType="inComponent">
+          </message-outlet-component>
+          <conditional-component
+            [condition]="currentRecipe&&!loading">
+            <ng-template conditionalContent>
+              <recipe-form 
+                [currentRecipe]="currentRecipe"
+                [isEdit]="true"
+                [submitHandler]="editRecipe">
+              </recipe-form>
+            </ng-template> 
+          </conditional-component>
+        </div>
+      </div>
+      <ng-template #noRecipeFound>
+        <div class="col-12">
+          <h3 class="font-weight-bolder">No recipe found.</h3>
+        </div>
+      </ng-template>
+    </div>
+</div>
