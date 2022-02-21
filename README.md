@@ -1,4 +1,4 @@
-CAP_UDEMY_APP
+CAP_UDEMY_ANGULAR
 
 - ready for testing purposes.
 
