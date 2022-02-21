@@ -1,0 +1,85 @@
+<li 
+    class="list-group-item p-2"
+    *ngIf="!showForm; else ingredientForm">
+    <div class="row">
+        <div class="col">
+            <h6 class="font-weight-bolder d-inline">
+                {{optionName}}
+            </h6>
+        </div>
+        <div class="col-auto text-right">
+            <h6 class="d-inline">×</h6>
+            <h6 class="d-inline">{{form.value.quantity}} <strong>{{itemUnit}}</strong></h6>
+            <button 
+                (click)="deleteIngredient.emit()"
+                class="btn btn-danger ml-2 py-0 font-weight-bolder">
+                delete
+            </button>
+            <button 
+                (click)="toggleForm()"
+                class="btn btn-success ml-2 py-0 font-weight-bolder">
+                edit
+            </button>
+        </div>
+    </div>
+</li>
+<ng-template #ingredientForm>
+    <li class="container-fluid list-group-item" 
+        [formGroup]="form">
+        <div class="row">
+            <div class="col container-fluid">
+                <div class="row">
+                    <div class="col-12 pl-1">
+                        <h6 class="font-weight-bold">Edit ingredient</h6>
+                        <error-bag [errors]="form._errors('ingredient')">
+                        </error-bag>
+                        <error-bag [errors]="form._errors('quantity')">
+                        </error-bag>
+                    </div>
+                    <div class="col px-1">
+                        <select 
+                            class="form-control d-inline p-0 py-0" 
+                            formControlName="item"
+                            [ngStyle]="{height:'2em'}">
+                            <option 
+                                *ngFor="let item of form.items"
+                                class="p-0"
+                                [selected]=""
+                                [value]="item._id">
+                                {{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-auto p-0 py-1" *ngIf="form.get('item').value">
+                        <strong>&times;</strong>
+                    </div>
+                    <div class="col px-1">
+                        <input 
+                            formControlName="quantity"
+                            type="number" 
+                            class="form-control d-inline py-0"
+                            [ngStyle]="{height:'2em'}">
+                    </div>
+                    <div class="col-auto p-0 py-1" *ngIf="form.get('item').value !== ''">
+                        {{itemUnit}}
+                    </div>
+                    <div class="col-auto px-1">
+                        <button
+                            (click)="onCancel()"
+                            [ngStyle]="{verticalAlign:'text-top'}"
+                            class="btn px-1 py-0 btn-light font-weight-bolder">
+                            Cancel
+                        </button>
+                        <button
+                            [disabled]="!form.valid"
+                            (click)="saveValue($event)"
+                            [ngStyle]="{verticalAlign:'text-top'}"
+                            class="btn px-1 ml-1 py-0 btn-primary font-weight-bolder">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>  
+</ng-template>
