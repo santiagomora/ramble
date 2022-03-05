@@ -1,0 +1,25 @@
+EXPLICACION
+	Hemos introducido un ciclo en el programa client.c que 
+hace 10000 conexiones al servidor, cada proceso hijo invoca
+la syscall sleep() por 5 segundos. 
+
+	Introducimos en el server.c una variable global
+cctr  que nos permite limitar el maximo de conexiones posibles 
+a 2000. Disminuimos esta variable a medida que vayan terminando
+los procesos hijos con la llamada waitpid(), de esta manera se 
+aceptan progresivamente nuevas conexiones. Cuando llega 
+la señal SIGCHLD del primer proceso hijo, empezamos a aceptar
+nuevas conexiones porque el proceso sale del estado pause().
+
+	Al consultar la cantidad de procesos corriendo en el 
+sistema cada 5 segundos (tiempo usado para simular retardo en 
+los procesos hijo) observamos que siempre se mantiene menor o
+igual a 2000 (maxima cantidad de conexiones definidas MAX_CONN).
+	Si en otra terminal corremos el comando: 
+
+		ps -elf | grep server | wc -l 
+
+	Observamos que no siempre la cantidad de conexiones se
+mantiene 2000. Nos atrevemos a decir que esto podria deberse a 
+que el contador aumenta más rapidamente de lo que disminuye en 
+el handler de la señal SIGCHLD (las señales tardan mas en llegar).
