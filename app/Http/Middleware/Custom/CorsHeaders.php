@@ -13,10 +13,9 @@ class CorsHeaders {
      * @return mixed
      */
     private function getAllowed(){
-	return 'http://127.0.0.1:3000';
         return env( "DEPLOY","production" ) === "development"
             ? 'http://127.0.0.1:3000'
-            : 'https://mutz-hub.herokuapp.com';
+            : 'https://mutz-hub-front.herokuapp.com';
     }
 
     public function handle($request, Closure $next)
