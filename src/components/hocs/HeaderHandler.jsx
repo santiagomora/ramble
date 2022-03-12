@@ -6,7 +6,7 @@ import {
     withRouter
 } from 'react-router-dom';
 import {
-    GET
+    GET,API_BASE
 } from '../../utils/api.jsx';
 import {
     round,
@@ -111,7 +111,7 @@ export default function( Target ){
     return RequestHandler(
         HeaderHandler( Target ),{
             options:(params) => ({
-                url:'https://api.exchangeratesapi.io/latest',
+                url:API_BASE+'/rates',
                 withCredentials:false
             }),
             method:'get'

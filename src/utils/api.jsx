@@ -1,14 +1,15 @@
 import axios from 'axios';
 
+// colocar este par de variables directamente en variables de entorno
 export const BASE_URL = process.env.NODE_ENV === 'production'
     ? 'https://mutz-hub-back.herokuapp.com'
     : 'http://127.0.0.1:8000';
 
 export const RESOURCE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://mutz-hub.herokuapp.com'
+    ? 'https://mutz-hub-front.herokuapp.com'
     : 'http://127.0.0.1:3000';
 
-const API_BASE = `${BASE_URL}/api`;
+export const API_BASE = `${BASE_URL}/api`;
 
 export const GET = (
     options
