@@ -53,5 +53,8 @@
     },
     "devDependencies": {
         "popper.js": "^1.16.1"
+    },
+    "engines" : { 
+        "node" : ">=16.0.0"
     }
 }
