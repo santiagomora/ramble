@@ -1,0 +1,36 @@
+version: "2.2"
+services: 
+        lumen: 
+                depends_on: 
+                        - mariadb
+                container_name: "pic_api_php"
+                build: 
+                        context: "./docker/php"
+                        dockerfile: "PHPDockerfile"
+                        args:
+                                - DEFAULT_USR=${DEFAULT_USR}
+                                - DEFAULT_GRP=${DEFAULT_GRP}
+                image: pic_api_php_image
+                volumes:
+                       - ${LUMEN_DIR}:/home/lumen
+                       - ./docker/php/php.ini:/usr/local/etc/php/php.ini-development
+                ports:
+                        - "8080:8080"
+                entrypoint: ["sh","start.sh"]
+
+        mariadb:
+                container_name: ${MARIADB_HOSTNAME}
+                image: mariadb:10.7.1-focal
+                environment:
+                        - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+                        - MARIADB_DATABASE=${MARIADB_DATABASE}
+                        - MARIADB_USER=${MARIADB_USER}
+                        - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+                        - MYSQL_TCP_PORT=${MARIADB_PORT}
+                volumes:
+                        - ./docker/mariadb/data:/var/lib/mysql
+
+networks:
+        default: 
+                name: 'pic_api_network'
+                driver: 'bridge'
