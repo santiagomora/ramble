@@ -1,0 +1,50 @@
+<conditional-component
+  [condition]="!loading">
+  <ng-template conditionalContent>
+    <div 
+      *ngIf="currentRecipe; else noRecipeFound">
+      <div 
+        class="container-fluid p-0" 
+        id="{{currentRecipe.data._id}}">
+        <div class="row">
+          <div class="col">
+            <h2 class="font-weight-bolder">{{currentRecipe.data.name}}</h2>
+            <p class="text-right mb-0">
+              created at <strong>{{currentRecipe.data.createdAt}}</strong>, <br> last updated at <strong>{{currentRecipe.data.updatedAt}}</strong>
+            </p>
+          </div>
+          <div class="col-12 py-3 text-right">
+            <action-component 
+              *ngFor="let a of currentRecipe.actions(this)['crud']"
+              [actionDescriptor]="a">
+        </action-component> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 pb-3">
+            <h5>Ingredients</h5>
+            <ul class="list-group">
+              <li class="container-fluid list-group-item"
+                *ngFor="let ingredient of currentRecipe.data.ingredients">
+                <div class="row justify-content-end">
+                  <div class="col-auto pr-1">{{ingredient.item.data.name}}</div>
+                  <div class="col-auto p-0">&times; {{ingredient.quantity}}</div>
+                  <div class="col-auto pl-1">{{ingredient.item.data.unit.data.longName}}</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h5>Preparation</h5> 
+            {{currentRecipe.data.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noRecipeFound>
+      <h3 class="font-weight-bolder">No recipe found.</h3>
+    </ng-template>
+  </ng-template>
+</conditional-component>

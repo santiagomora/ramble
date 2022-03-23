@@ -1,0 +1,34 @@
+<form 
+    [formGroup]="formControl"
+    (submit)="onSubmit($event)" 
+    class="container-fluid p-0">
+    <div class="row">
+        <div class="col-6 mt-2">
+            <h6 class="font-weight-bolder">Short Name</h6>
+            <input 
+                type="text"
+                name="shortName"
+                class="form-control w-100"
+                formControlName="shortName">
+            <error-bag [errors]="formControl._errors('shortName')">
+            </error-bag>
+        </div>
+        <div class="col-6 mt-2">
+            <h6 class="font-weight-bolder">Long Name</h6>
+            <input 
+                type="text"
+                name="longName"
+                class="form-control w-100"
+                formControlName="longName">
+            <error-bag [errors]="formControl._errors('longName')">
+            </error-bag>
+        </div>
+        <div class="col-12 text-right mt-3">
+            <input
+                [disabled]="!formControl.valid"
+                type="submit" 
+                value="{{isEdit ? 'Save' : 'Create'}}" 
+                class="btn font-weight-bolder px-2 py-0 {{isEdit ? 'btn-success' : 'btn-primary'}}">
+        </div>
+    </div>
+</form>  

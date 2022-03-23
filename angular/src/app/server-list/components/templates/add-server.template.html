@@ -1,0 +1,50 @@
+<form action="" 
+    class="container-fluid mb-4" 
+    (submit)="submitServer($event)"
+    [formGroup]="formControl">
+    <div class="row">
+        <div class="col-12">
+            <h4>
+                Create a new server
+            </h4>
+            <message-outlet-component outletType="inComponent">
+            </message-outlet-component>
+        </div>
+        <div class="col">
+            <input 
+                name="name"
+                type="text" 
+                formControlName="name"
+                class="form-control w-100">
+            <error-bag [errors]="formControl._errors('name')">
+            </error-bag>
+        </div>
+        <div class="col-auto">
+        <label for="enabled" 
+            class="m-0" 
+            [ngStyle]="{verticalAlign:'-moz-middle-with-baseline'}">
+            <input 
+                name="enabled"
+                formControlName="enabled"
+                type="checkbox" >
+            <strong class="ml-2">Enabled</strong>
+        </label>
+        </div>
+        <div class="col-auto text-right">
+            <button 
+            [disabled]="!formControl.valid"
+            class="btn btn-primary font-weight-bolder" 
+            type="submit">
+            create server
+            </button>
+        </div>
+        <div class="col-12 mt-2">
+            <p *ngIf="displaySuccess; else noserver" class="text-right" style="color:var(--success)">
+                <!--{{name}} was successfully created-->
+            </p>
+        </div>
+        <ng-template #noserver>
+            Waiting for server creation.
+        </ng-template>
+    </div>
+</form>

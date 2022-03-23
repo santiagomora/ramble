@@ -1,0 +1,65 @@
+<div class="modal-content" [ngStyle]="{'max-width':'80%'}">
+    <conditional-component
+        [condition]="!loading">
+        <ng-template conditionalContent>
+            <div class="modal-header">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col">
+                            <h4>View Order - <strong>{{currentOrder.data._id}}</strong></h4>
+                        </div>
+                        <div class="col text-right ">
+                            <button type="button" 
+                                class="btn btn-danger font-weight-bolder px-2 py-0" 
+                                (click)="close()" >
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <message-outlet-component outletType="inComponent">
+                        </message-outlet-component>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 font-weight-bolder">user</h6>
+                        {{currentOrder.data.userId}}
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 font-weight-bolder">created At</h6>
+                        {{currentOrder.data.createdAt}}
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 font-weight-bolder">updated At</h6>
+                        {{currentOrder.data.updatedAt}}
+                    </div>
+                    <div class="col-12 mt-4">
+                        <table class="table table-striped table-bordered" >
+                            <thead>
+                                <tr>
+                                    <td class="font-weight-bolder">ID</td>
+                                    <td class="font-weight-bolder">Name</td>
+                                    <td class="font-weight-bolder">Unit</td>
+                                    <td class="font-weight-bolder">Quantity</td>
+                                    <td class="font-weight-bolder">Price</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let oi of currentOrder.data.items">
+                                    <td>{{oi.item.data._id}}</td>
+                                    <td>{{oi.item.data.name}}</td>
+                                    <td>{{oi.item.data.unit.data.longName}}</td>
+                                    <td>{{oi.quantity}}</td>
+                                    <td>{{oi.item.data.price}} - USD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </conditional-component>
+</div>
