@@ -1,4 +1,5 @@
-Node Projects
-=============
--	Microservice FCC Node certifications at **js\_node\_fcc\_microservices**
--	Image search API at **js\_node\_image\_search**
+# FCC QA projects 
+- 	[Metric imperial converter](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter)
+
+<br/>
+deployed at [Heroku](https://smd-fcc-quality-assurance.herokuapp.com)
