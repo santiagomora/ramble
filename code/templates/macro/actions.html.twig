@@ -1,0 +1,15 @@
+{% macro actions( entity,actions ) %}
+    {% from "macro/modal.html.twig" import modal %}
+    <ul class="list-group list-group-horizontal justify-content-end">
+        {% for act in actions %}
+            {% set act = act.setActionEntity(entity) %}
+            {% set displayOptions = act.getDisplayOptions() %}
+            <li class="{{ displayOptions.wrapperClasses }}">
+                {{ displayOptions.htmlTag|raw }}
+            </li>
+            {% if act is instanceof("App\\Contract\\HasModalFormInterface") %}
+                {{ modal( act.getModalTitle,act.getBuiltForm,null,act.getFormTheme ) }}
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endmacro actions %}

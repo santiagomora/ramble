@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% set user = app.user %}
+{% set navbarType = user is not null ?  constant('ENTITY_SLUG', user) : "default" %}
+<html>
+    {% block head %}
+        {% include("default/head.html.twig") %}
+    {% endblock %}
+    <body>
+        <div class="container-fluid">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-11">
+                    {% block navbar %}
+                        {% include("#{navbarType}/navbar.html.twig") %}
+                        <hr class="mx-4">
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3 mx-2">
+                <div class="col-md-11">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+    {% block footer %}
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-11">
+                    <hr class="mx-4">
+                    {% include("default/footer.html.twig") %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% include("default/scripts.html.twig") %}
+</html>

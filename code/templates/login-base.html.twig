@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+        {% include("default/head.html.twig") %}
+    {% endblock %}
+    <body>
+        <div class="container-fluid mt-10" style="margin-top:10vh">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    {% block navbar %}
+                        <a class="navbar-brand d-inline" href="{{url('anonymous-crud-index')}}">
+                            <h1 class="d-inline">Jobeet</h1>
+                        </a>
+                        <h2 class="d-inline">Please sign in</h2>
+                        <hr>
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    {% block content %}
+                        {% include("default/content.html.twig") %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+    {% block footer %}
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <hr>
+                    {% include("default/footer.html.twig") %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% include("default/scripts.html.twig") %}
+</html>

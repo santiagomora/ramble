@@ -1,0 +1,3 @@
+parameters:
+    public_dir: '%kernel.project_dir%/public/'
+    entity_file_storage: 'uploads'

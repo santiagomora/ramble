@@ -1,0 +1,25 @@
+.list-group-item{
+    padding:5px;
+    border:none !important;
+}
+
+.btn{
+    border-radius:22px;
+    padding: 8px 13px;
+    font-weight:bold;
+}
+
+.nav-link{
+    font-weight:bold;
+    font-size:18px;
+}
+
+.sub-title{
+    margin-bottom:0px;
+    margin-top:-10px;
+    padding-top:0 !important;
+}
+
+.nav-padding{
+    padding:.5rem 1rem
+}

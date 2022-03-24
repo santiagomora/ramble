@@ -1,0 +1,8 @@
+{% block sidebar %}
+    {% from "macro/list.html.twig" import list %}mealCast
+    <div class="col-md-2">
+        <h5><strong>Filter By</strong></h5>
+        {{ form(filters) }}
+    </div>
+
+{% endblock %}

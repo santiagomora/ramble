@@ -1,0 +1,29 @@
+{% from "macro/actions.html.twig" import actions %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    {% from "macro/actions.html.twig" import actions %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                {% block edit_create_title %}
+                {% endblock %}
+            </div>
+            <div class="col-md-6">
+                {% if dataActions is not null %}
+                    {{ actions(entityInstance,dataActions[constant('ENTITY_CLASS',entityInstance)]) }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                {% block create_edit_form %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

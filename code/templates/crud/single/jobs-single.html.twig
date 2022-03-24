@@ -1,0 +1,50 @@
+{% extends "crud/single.html.twig" %}
+
+{% from "macro/actions.html.twig" import actions %}
+
+{% block single_title %}
+    <h2>{{ entityInstance.getJbTitle }}</h2>
+{% endblock %}
+
+{% block single_content %}
+    {% set job = entityInstance %}
+    <div class="row ">
+        <div class="col-md-3">
+            <img src="{{ asset(job.getJbLogo) }}" style="max-width:250px">
+        </div>
+        <div class="col-md-9">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ job.getJbPosition.getPoName }} - {{ job.getJbType.getJtName }}</h4>
+                        <h4>{{ job.getJbLocation }}</h4>
+                        <h5>Published on {{ job.getJbCategory.getCaName }} by {{ job.getJbCompanyName }}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                        {{ job.getJbDescription }}
+                        <hr>
+                    </div>
+                    <div class="col-md-12">
+                        <h5>How to Apply</h5>
+                        {{ job.getJbInstructions }}
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div class="col-md-12 text-right">
+                        <h6>
+                            Vacants open from {{ job.getJbCreatedAt|date('Y-m-d') }},
+                            until {{ job.jbExpiresAt|date('Y-m-d') }}
+                        </h6>
+                        <h6>Click <a href="{{ job.getJbUrl }}" target="_blank">here</a> to view full job information</h6>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        You can get more information on <a href="mailto:{{ job.getJbEmail }}">{{ job.getJbEmail }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

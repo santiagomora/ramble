@@ -1,0 +1,31 @@
+{% macro table(data,tableInfo,dataActions,modalForm) %}
+    {% from "macro/actions.html.twig" import actions %}
+    {% set accessors = tableInfo.accessors %}
+    <table class="table">
+        <thead>
+            <tr>
+                {% for access in accessors %}
+                    <th scope="col">{{ access.display }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for elem in data %}
+                <tr>
+                    {% for acc in accessors %}
+                        {% if acc.accessor.method is same as("actions") and dataActions is defined %}
+                            <td>{{ actions(elem,dataActions[constant('ENTITY_CLASS', elem)],modalForm) }}</td>
+                        {% else %}
+                            {% set content = attribute(elem,acc.accessor.method,acc.accessor.params)   %}
+                            {% if content is instanceof("\DateTime") %}
+                                <td>{{ content|date('d-m-Y H:i:s') }}</td>
+                            {% else %}
+                                <td>{{ content }}</td>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endmacro table %}

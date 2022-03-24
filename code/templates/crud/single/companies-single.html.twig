@@ -1,0 +1,30 @@
+{% extends "crud/single.html.twig" %}
+
+{% from "macro/actions.html.twig" import actions %}
+
+{% block single_title %}
+    <h2>{{ entityInstance.getCoName }}</h2>
+{% endblock %}
+
+{% block single_content %}
+<div class="row my-5">
+    <div class="col-md-4">
+        <h5>Company Logo</h5>
+        {{ entityInstance.getCoLogo }}
+    </div>
+    <div class="col-md-4">
+        <h5>Admin</h5>
+        {{ entityInstance.coAdmin.getAmName  }}
+    </div>
+    <div class="col-md-4">
+        <h5>Company Email</h5>
+        {{ entityInstance.getCoEmail }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+        Created at {{ entityInstance.getCoCreatedAt|date('Y-m-d')  }} <br>
+        Last Updated at {{ entityInstance.getCoUpdatedAt|date('Y-m-d')  }}
+    </div>
+</div>
+{% endblock %}
