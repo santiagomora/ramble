@@ -9,4 +9,4 @@ This bootstrap contains implementation projects for:
 -	[File Metadata Microservice](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/file-metadata-microservice)
 
 <br/>
-Deployed at **[heroku](https://smd-fcc-quality-assurance.herokuapp.com/)**
+Deployed at [**heroku**](https://smd-fcc-quality-assurance.herokuapp.com/)
