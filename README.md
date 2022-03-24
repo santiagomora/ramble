@@ -10,12 +10,6 @@ configuration
 
 - use docker-compose up -d to initialize containers.
 
-- go into mysql container and create the app mysql user considering the .env credentials:
-```
-	docker exec -it pic_api_mariadb mysql -u root -p (password: root)
-	CREATE USER 'pic_api_USR'@'%' IDENTIFIED BY 'pic_api_PWD';
-	GRANT ALL PRIVILEGES ON `pic_api_DB`.* TO 'pic_api_USR'@'%'
-```
 - go into the php lumen container and seed the databases. Each seeding gets new data from an external api.
 ```
 	docker exec -it pic_api_php sh 

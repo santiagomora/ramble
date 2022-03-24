@@ -20,13 +20,16 @@ services:
 
         mariadb:
                 container_name: ${MARIADB_HOSTNAME}
-                image: mariadb:10.7.1-focal
+                image: "pic_api_mariadb_image"
                 environment:
                         - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
                         - MARIADB_DATABASE=${MARIADB_DATABASE}
                         - MARIADB_USER=${MARIADB_USER}
                         - MARIADB_PASSWORD=${MARIADB_PASSWORD}
                         - MYSQL_TCP_PORT=${MARIADB_PORT}
+                build: 
+                        context: "./docker/mariadb"
+                        dockerfile: "MARIADBDockerfile"
                 volumes:
                         - ./docker/mariadb/data:/var/lib/mysql
 
