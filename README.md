@@ -1,5 +1,3 @@
 Available branches: 
-
-- 	practices
--	exp_gui
+- 	Some basic python algorithms at **python\_algorithms**
 
