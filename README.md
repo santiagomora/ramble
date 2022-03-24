@@ -1,5 +1,2 @@
-# Available branches: 
-- 	Practices at **c\_practices**
--	C++ Beverage expender GUI at **c\_beverage\_expender\_gui**
--	Algorithms at **c\_algorithms**
-
+# Beverage Expender
+GUI project developed for Informática II subject at UTN-FRBA.

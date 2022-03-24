@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QtImagen/Speed.png</file>
+        <file>QtImagen/QUILMES.jpg</file>
+        <file>QtImagen/Pepsi.png</file>
+        <file>QtImagen/manaos.png</file>
+        <file>QtImagen/FERNET.jpg</file>
+        <file>QtImagen/Fanta.png</file>
+        <file>QtImagen/DRLemon.jpg</file>
+        <file>QtImagen/Coca-Cola.png</file>
+        <file>QtImagen/7up.png</file>
+        <file>QtImagen/Icono.ico</file>
+        <file>DB/dispenser.db</file>
+        <file>QtImagen/mapa-botones.png</file>
+    </qresource>
+</RCC>
