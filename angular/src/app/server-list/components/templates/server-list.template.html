@@ -1,0 +1,28 @@
+<h4 class="font-weight-bold">
+    {{title}}
+</h4>
+<conditional-component
+    [condition]="servers && !loading">
+    <ng-template conditionalContent>
+        <pagination-component 
+            *ngIf="servers.length>0; else noServers"
+            [fetchData]="fetchData"
+            [pagination]="pagination">
+            <div class="col-12 mt-3">
+                <ng-template paginatedContent>
+                    <server 
+                        *ngFor="let server of servers"
+                        [id]="server._id" 
+                        [enabled]="server.enabled" 
+                        [name]="server.name">
+                    </server> 
+                </ng-template>
+            </div>
+        </pagination-component>
+        <ng-template #noServers>
+            <div class="col-12 mb-3"> 
+                No servers found.
+            </div>
+        </ng-template>
+    </ng-template>
+</conditional-component>

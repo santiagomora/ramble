@@ -1,0 +1,29 @@
+<div class="container-fluid px-0 pb-3">
+    <div class="row">
+        <div class="col">
+            <h5>{{name|reverse:reverse}}</h5>
+        </div>
+        <div class="col-auto text-right" id="id">
+            <div>
+                <button 
+                    class="btn btn-danger d-inline font-weight-bolder mr-2 py-0 px-2"
+                    (click)="delete(id)">
+                    Delete
+                </button>
+                <button 
+                    class="btn d-inline font-weight-bolder py-0 mr-2 px-2 {{enabled ? 'btn-warning':'btn-success'}}"
+                    (click)="toggleServer(id)">
+                    {{!enabled ? "Enable" : "Disable"}}
+                </button>
+                <button 
+                    class="btn d-inline font-weight-bolder py-0 px-2 btn-light"
+                    (click)="toggleReverse($event)">
+                    {{reverse ? 'Correct': 'Reverse'}}
+                </button>
+            </div>
+            <div>
+                the server is {{enabled ? "enabled" : "disabled"}}
+            </div>
+        </div>
+    </div>
+</div>

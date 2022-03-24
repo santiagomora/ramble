@@ -1,0 +1,76 @@
+<conditional-component
+    [condition]="!loading">
+    <ng-template conditionalContent>
+        <form 
+            [formGroup]="formControl"
+            (submit)="onSubmit($event)" 
+            class="container-fluid p-0">
+            <div class="row">
+                <div class="col-4 mt-2">
+                    <h6 class="font-weight-bolder">Name</h6>
+                    <input 
+                        type="text"
+                        name="name"
+                        class="form-control w-100"
+                        formControlName="name">
+                    <error-bag [errors]="formControl._errors('name')">
+                    </error-bag>
+                </div>
+                <div class="col-4 mt-2">
+                    <h6 class="font-weight-bolder">Brand</h6>
+                    <input 
+                        type="text"
+                        name="brand"
+                        class="form-control w-100"
+                        formControlName="brand">
+                    <error-bag [errors]="formControl._errors('brand')">
+                    </error-bag>
+                </div>
+                <div class="col-4 mt-2">
+                    <h6 class="font-weight-bolder">Price</h6>
+                    <input 
+                        type="number"
+                        name="price"
+                        class="form-control w-100"
+                        formControlName="price">
+                    <error-bag [errors]="formControl._errors('price')">
+                    </error-bag>
+                </div>
+                <div class="col-12 mt-2">
+                    <h6 class="font-weight-bolder">Unit</h6>
+                    <div class="pl-0">
+                        <select 
+                            formControlName="unit"
+                            class="form-control d-inline py-0">
+                            <option 
+                                *ngFor="let unit of formControl.units"
+                                [value]="unit._id"
+                                [selected]="unit._id===formControl.get('unit').value">
+                                {{unit.longName}}
+                            </option>
+                        </select>
+                        <error-bag [errors]="formControl._errors('unit')">
+                        </error-bag>
+                    </div>
+                </div>
+                <div class="col-12 mt-2">
+                    <h6 class="font-weight-bolder">Description</h6>
+                    <textarea 
+                        class="form-control w-100" 
+                        formControlName="description"
+                        rows="4">
+                    </textarea>
+                    <error-bag [errors]="formControl._errors('description')">
+                    </error-bag>
+                </div>
+                <div class="col-12 text-right mt-3">
+                    <input
+                        [disabled]="!formControl.valid"
+                        type="submit" 
+                        value="{{isEdit ? 'Save' : 'Create'}}" 
+                        class="btn font-weight-bolder px-2 py-0 {{isEdit ? 'btn-success' : 'btn-primary'}}">
+                </div>
+            </div>
+        </form>  
+    </ng-template>
+</conditional-component>
