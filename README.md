@@ -1,4 +1,4 @@
-CAP_UDEMY_ANGULAR
+# Angular Udemy Course Project
 
 - ready for testing purposes.
 
