@@ -4,7 +4,7 @@
 
 - give execute permissions to both start scripts in code/express and code/react: sudo chmod +x start.sh
 
-- rename .env.example files to .env in this directory and code/express directory
+- rename .env.example files to .env in this directory and code/express directory.
 
 - docker-compose up -d. will serve at localhost:3000
 
