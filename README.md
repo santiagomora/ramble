@@ -1,2 +1,2 @@
 PROJECTS
--	museum data extractor: php_pic_api
+-	Scheduling system: php_laravel_schedule
