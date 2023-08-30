@@ -1,0 +1,198 @@
+:root{
+	--main:firebrick;
+	--lmain:red;
+	--dmain:darkred;
+}
+
+button{
+	border-radius:3px;
+}
+button:disabled{
+	opacity:0.5;
+}
+
+.block{
+	padding-left:15px;
+}
+.xxxlfont{
+	font-size:84px;
+}
+.xxlfont{
+	font-size:64px;
+}
+button.cbutton{
+	border-right: solid 2px #b0b0b0;
+	border-left: solid 2px #b0b0b0;
+	padding-left:35px;
+	padding-right:35px;
+}
+
+button.stpadding{
+	padding-top:5px;
+}
+input.setbox{
+	color:inherit;
+	width:50px;
+}
+.noout{
+	outline:none !important;
+}
+body{
+	background-color:white;
+	position:absolute;
+	height:100vh;
+	width:100%;
+	font-size:16px;
+	font-family: 'Ubuntu', sans-serif;
+	color:#303030;
+}
+.smargin{
+	margin:6px 10px;
+}
+.noborder{
+	border:solid 1px transparent;
+}
+.smpadding{
+	padding:3px;
+}
+.hsmargin{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.vmargin{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.relative{
+	position:relative;
+}
+.absolute{
+	position:absolute;
+}
+.block{
+	display:block;
+}
+
+.background{
+	top:0px;
+	left:0px;
+	height:50vh;
+	width:100%;
+}
+.hpadding{
+	padding-left:15px;
+	padding-right:15px;
+}
+.hidden{
+	display:none
+}
+
+.main{
+	background-color:white;
+	border-radius:5px;
+}
+
+.center {
+	margin:auto;
+	position:relative;
+	max-width:55% !important;
+	top:15%;
+	width:100%;
+}
+.nopadding{
+	padding:0px;
+}
+.amargin{
+	margin:auto;
+}
+.lgray{
+	color:#b0b0b0
+}
+.gray{
+	color:#505050;
+}
+.linemid{
+	vertical-align:middle;
+}
+.hmargin{
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.bpadding{
+	padding-bottom:15px;
+}
+.title{
+	display:inline-block;
+}
+.text-left{
+	text-align:left;
+}
+.text-right{
+	text-align:right;
+}
+.text-center{
+	text-align:center;
+}
+.vpadding{
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.stpadding{
+	padding-top:10px;
+}
+.mfont{
+	font-size:19px
+}
+.sfont{
+	font-size:14px;
+}
+.lfont{
+	font-size:24px;
+}
+.xlfont{
+	font-size:30px;
+}
+.mpadding{
+	padding:15px;
+}
+.padding{
+	padding:20px;
+}
+.box{
+	border:solid 1px var(--main);
+	border-radius:3px;
+}
+.sub{
+	border-bottom:solid 1px #d0d0d0;
+}
+.border{
+	border:solid 1px #d0d0d0;	
+}
+.nomargin{
+	margin:0px;
+}
+.transparent{
+	background-color:transparent;
+}
+.mid{
+	width:50%;
+}
+.inblock{
+	display:inline-block;
+}
+::-webkit-scrollbar {
+    width: 7px;
+}
+ 
+::-webkit-scrollbar-track {
+	background-color:transparent;
+}
+ 
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color:#ccc;
+}
+.mbottom {
+	margin-bottom:15px;
+}
