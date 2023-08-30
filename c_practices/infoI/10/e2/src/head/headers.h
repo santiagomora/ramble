@@ -1,0 +1,1 @@
+int printChars( char* );

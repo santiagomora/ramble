@@ -1,0 +1,16 @@
+EXPLICACION
+	Hemos introducido un ciclo en el programa client.c 
+que hace 10000 conexiones al servidor. 
+	Observamos que al añadir un handler de señal para 
+liberar los procesos hijo a su termino (señal SIGCHLD) 
+que invoque el syscall waitpid(NULL), no todos los procesos 
+hijo terminarian adecuadamente (como hemos detallado, termi-
+narian algunos, el programa volveria a su ejecucion usual y 
+terminaria).
+	Para lograr el cierre apropiado de  todos los 
+procesos hijos, debemos colocar la llamada waitpid() dentro 
+de un ciclo (mientras todavia haya hijos que cerrar), asi
+el programa terminaria con todas las instancias hijo, y 
+continuaria en estado S (interruptible sleep).
+	Una apreciacion que podemos hacer, es que los pro-
+cesos hijo no cierran ordenadamente. 
