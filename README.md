@@ -2,4 +2,3 @@
 - 	Practices at **c\_practices**
 -	C++ Beverage expender GUI at **c\_beverage\_expender\_gui**
 -	Algorithms at **c\_algorithms**
-
