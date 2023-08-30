@@ -1,0 +1,328 @@
+:root{
+	--main:green;
+	--lmain:lightgreen;
+	--dmain:darkgreen;
+}
+button{
+	border-radius:3px;
+}
+.block{
+	padding-left:15px;
+}
+.tpadding{
+	padding-top:10px;
+}
+.table{
+	display:table;
+}
+.shpadding{
+	padding-right:3px;
+	padding-left:3px;
+}
+body{
+	background-color:white;
+	position:absolute;
+	height:100vh;
+	width:100%;
+	font-size:16px;
+	font-family: 'Ubuntu', sans-serif;
+}
+.smargin{
+	margin:6px 10px;
+}
+.noborder{
+	border:solid 1px transparent;
+	outline:none !important;
+}
+.calculator{
+	border-radius:5px;
+	border-radius:8px;
+}
+.result {
+	text-align:right;
+	overflow:auto;
+	padding: 16px 16px 0px 16px;
+	width:100%;
+}
+.darkgray{
+	background-color:rgb(80,80,80,0.9)!important;
+	color:#f5f5f5 !important;	
+}
+.current{
+	border-bottom:solid 1px rgba(80,80,80,0.5);
+	width:100%;
+	padding:10px;
+}
+.history{
+	list-style:none;
+	padding:8px;
+	border-radius:3px;
+	min-width:300px;
+}
+.hitem{
+	border-radius:3px;
+	border:1px solid var(--lmain);
+	color:var(--lmain);
+	margin:0px 5px;
+}
+.opbutton{
+	
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.error{
+	color:red !important;
+}
+input{
+	max-width:100%;
+	resize:none;
+}
+.smpadding{
+	padding:3px;
+}
+.hsmargin{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.vmargin{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.relative{
+	position:relative;
+}
+.absolute{
+	position:absolute;
+}
+.block{
+	display:block;
+}
+
+.background{
+	top:0px;
+	left:0px;
+	height:50vh;
+	width:100%;
+	background-color:var(--dmain);
+}
+.hpadding{
+	padding-left:15px;
+	padding-right:15px;
+}
+.overlay{
+	background-color:white;
+	opacity:50%;
+	width:90%;
+	height:100%;
+}
+
+.hidden{
+	display:none
+}
+
+button.clear{
+	background-color:rgb(178, 34, 34,0.3);
+}
+button.clear.clearal{
+background-color:rgb(178, 34, 34,0.6);	
+}
+button.equal{
+	background-color:rgb(255, 215, 0,0.3);
+}
+button.equal.equalal{
+	background-color:rgb(255, 215, 0,0.6);	
+}
+button.operation{
+	background-color:rgb(80,80,80,0.3);
+}
+button.operation.operational{
+	background-color:rgb(80,80,80,0.6) ;
+}
+.separated{
+	display:flex
+}
+button.operation.smaller, button.clear.smaller{
+}
+.main{
+	background-color:white;
+	border-radius:5px;
+}
+.center {
+	margin:auto;
+	position:relative;
+	max-width:53% !important;
+	top:3%;
+	width:100%;
+}
+.nopadding{
+	padding:0px;
+}
+.amargin{
+	margin:auto;
+}
+.gray{
+	color:#505050;
+}
+
+.linemid{
+	vertical-align:middle;
+}
+.hmargin{
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.swcase{
+	border-color:transparent;
+	overflow:visible;
+	vertical-align:sub;
+	height:20px;
+	width:50px;
+	background-color:var(--lmain);
+	border-radius:10px;
+}
+
+.vmmargin{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.noop{
+	width:48%;
+	border-color:transparent;
+	background-color:rgba(80,80,80,0.3);
+	height:45px;
+	border-radius:5px;
+}
+
+.dial{
+	width:24%;
+	border-color:transparent;
+	background-color:#eaeaea;
+	height:45px;
+	border-radius:5px;
+}
+
+.active{
+	background-color:#b0b0b0;
+	color:#f5f5f5;
+}
+
+.sw{
+	border-color:transparent;
+	vertical-align:top;
+	width:30px;
+	height:30px;
+	border-radius:50%;
+}
+
+.bpadding{
+	padding-bottom:15px;
+}
+.title{
+	display:inline-block;
+}
+.text-left{
+	text-align:left;
+}
+.text-right{
+	text-align:right;
+}
+.text-center{
+	text-align:center;
+}
+.text-justify{
+	text-align:justify;
+}
+.vpadding{
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.stpadding{
+	padding-top:10px;
+}
+.mfont{
+	font-size:19px
+}
+.sfont{
+	font-size:14px;
+}
+.lfont{
+	font-size:24px;
+}
+.xlfont{
+	font-size:30px;
+}
+.mpadding{
+	padding:15px;
+}
+.padding{
+	padding:20px;
+}
+.box{
+	border:solid 1px var(--main);
+	border-radius:3px;
+}
+.sub{
+	border-bottom:solid 1px #d0d0d0;
+}
+.border{
+	border:solid 1px #d0d0d0;	
+}
+.nomargin{
+	margin:0px;
+}
+.transparent{
+	background-color:transparent;
+}
+
+.calc{
+	font-family:'Ubuntu',monospace !important;
+}
+.italic{
+	font-style:italic;
+}
+.crossed{
+	text-decoration: line-through;
+}
+.buttontext{	
+	color:white;
+	background-color:var(--dmain);
+	padding:0px 5px;
+	border-radius:3px;
+	border: solid 1px var(--dmain)
+	font-size:14px;
+}
+.mid{
+	width:50%;
+}
+.inblock{
+	display:inline-block;
+}
+.mmar{
+	line-height:30px !important;
+}
+.limitheight{
+	height:62vh;
+	max-height:62vh;
+	overflow:auto;
+}
+.selected{
+	background-color:rgb(80,80,80,0.9) ;
+	color:#f7f7f7
+}
+::-webkit-scrollbar {
+    width: 7px;
+}
+ 
+::-webkit-scrollbar-track {
+	background-color:transparent;
+}
+ 
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color:#ccc;
+}
+.mbottom {
+	margin-bottom:15px;
+}
