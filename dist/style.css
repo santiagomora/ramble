@@ -1,0 +1,57 @@
+.padcontainer{
+  padding-top:50px;
+}
+#title,.legend{
+    color:white;
+    padding:15px;
+    margin:auto;
+    margin-bottom:0px;
+}
+
+.dark-bg{
+	background-color:#333;
+	border-radius:5px;
+	overflow:hidden;
+}
+
+#app{
+    margin-top:-10px;
+}
+
+.label{
+    font-size:15px;
+	
+}
+
+.obutton{
+	background-color:transparent;
+	border:none;
+	padding:10px;
+	width:100%;
+	color:white;
+}
+
+.option{
+	display:inline-block;
+}
+
+.option:hover{
+	background-color:#007bff;
+	color:white;
+}
+
+.selected{
+	background-color:#007bff;
+}
+
+.option-set{
+	text-align:center;
+	list-style:none;
+	padding:0;
+	border-radius:3px;
+	margin-bottom:0;
+}
+
+tspan{
+	font-size:13px;
+}
