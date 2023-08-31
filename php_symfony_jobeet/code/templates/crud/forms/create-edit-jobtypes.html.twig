@@ -1,0 +1,31 @@
+{% extends "crud/create-edit.html.twig" %}
+
+{% block edit_create_title %}
+    <h2>{{ isCreate ? "Creating new Job Type" : "Editing #{entityInstance.getJtName}" }}</h2>
+{% endblock %}
+
+{% block form %}
+    <div class="container-fluid">
+        {{ form_errors(form) }}
+        {{ form_start(form) }}
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    {{ form_row(form.jtName) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.jtAdmin) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    {{ form_row(form.save) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block create_edit_form %}
+    {% form_theme form _self %}
+    {{ form(form) }}
+{% endblock %}

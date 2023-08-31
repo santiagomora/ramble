@@ -1,0 +1,9 @@
+{% macro list(data,slug) %}
+    <ul>
+        {% for elem in data %}
+            <li class="list-group">
+                <a href="{{ "/?#{slug}=#{elem.name|url_encode}" }}">{{ elem.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro list %}

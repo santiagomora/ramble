@@ -1,0 +1,52 @@
+{% extends "crud/create-edit.html.twig" %}
+
+{% from "macro/table.html.twig" import table %}
+
+{% from "macro/actions.html.twig" import actions %}
+
+
+{% block edit_create_title %}
+    <h2>{{ isCreate ? "Creating new Affiliate" : "Editing #{entityInstance.getAfName}" }}</h2>
+{% endblock %}
+
+{% block form %}
+    {% set role = app.user is not null ? app.user.getRoles[0] : 'ANONYMOUS_ROLE' %}
+    {% if role is same as('ADMIN_ROLE') %}
+        <div class="col-md-12">
+            {% do form.afAdmin.setRendered() %}
+        </div>
+    {% endif %}
+    <div class="container-fluid">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_row(form.afUrl) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.afEmail) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.afName) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.afAdmin) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(form.acCategory) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                {{ form_row(form.save) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block create_edit_form %}
+    {% form_theme form _self %}
+    {{ form(form) }}
+{% endblock %}

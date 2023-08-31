@@ -1,0 +1,15 @@
+{% extends "crud/single.html.twig" %}
+
+{% from "macro/actions.html.twig" import actions %}
+
+{% block single_title %}
+    <h2>{{ entityInstance.getPoName }}</h2>
+{% endblock %}
+
+{% block single_content %}
+    <div class="row ">
+        <div class="col-md-12">
+            {{ entityInstance.getPoDescription }}
+        </div>
+    </div>
+{% endblock %}

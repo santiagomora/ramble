@@ -1,0 +1,20 @@
+{% extends "crud/single.html.twig" %}
+
+{% from "macro/table.html.twig" import table %}
+
+{% from "macro/actions.html.twig" import actions %}
+
+{% block single_title %}
+    <h2>{{ entityInstance.getCaName }}</h2>
+{% endblock %}
+
+{% block single_content %}
+    <div class="row ">
+        <div class="col-md-12">
+            <h2>{{ extraData.title }}</h2>
+        </div>
+        <div class="col-md-12">
+            {{ table(extraData.data,extraData,extraData.actions) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+<nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h1 class="nav-padding">
+                    <a href="{{url('admin-dashboard')}}">
+                        <strong>Jobeet Admin</strong>
+                    </a>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <ul class="nav align-items-baseline d-flex">
+                    <li class="list-group-item nav-padding">
+                        <a href="/admin/jobs" class="nav-link p-0">
+                            <strong>Jobs</strong>
+                        </a>
+                    </li>
+                    <li class="list-group-item nav-padding">
+                        <a href="/admin/companies" class="nav-link p-0">
+                            <strong>Companies</strong>
+                        </a>
+                    </li>
+                    <li class="list-group-item nav-padding">
+                        <a href="/admin/affiliates" class="nav-link p-0">
+                            <strong>Affiliates</strong>
+                        </a>
+                    </li>
+                    <li class="list-group-item nav-padding">
+                        <a href="/admin/categories" class="nav-link p-0">
+                            <strong>Categories</strong>
+                        </a>
+                    </li>
+                    <li class="list-group-item nav-padding">
+                        <a href="/admin/jobtypes" class="nav-link p-0">
+                            <strong>Job Types</strong>
+                        </a>
+                    </li>
+                    <li class="list-group-item nav-padding">
+                        <a href="/admin/positions" class="nav-link p-0">
+                            <strong>Job Positions</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right">
+                <a class="btn btn-danger my-sm-0" href="{{ path('admin-logout') }}">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

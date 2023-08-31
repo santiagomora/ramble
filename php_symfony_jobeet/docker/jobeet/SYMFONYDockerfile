@@ -1,0 +1,37 @@
+# Download base image ubuntu 18.04
+FROM ubuntu:18.04
+
+ARG user_group=santiagomora
+ARG user_name=santiagomora
+
+# Update Ubuntu Software repository
+RUN apt-get clean
+RUN apt-get update
+RUN apt-get install -y apt-transport-https
+ENV TZ=America/Argentina
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# Install Software propierties common build-essential binutils-doc git
+RUN apt-get install -y software-properties-common
+RUN apt-get update 
+RUN apt-get install -y apache2 wget nano php7.2 libapache2-mod-php7.2 php7.2-cli php7.2-ldap php7.2-mysql php-pear php7.2-xdebug php7.2-curl imagemagick php7.2-imagick zip unzip php-zip composer libmysqlclient-dev mysql-client php-mbstring php7.2-sqlite -y --fix-missing
+
+
+RUN phpenmod xdebug
+RUN echo 'xdebug.remote_enable = on'>> /etc/php/7.2/mods-available/xdebug.ini
+RUN echo 'xdebug.remote_connect_back = on'>> /etc/php/7.2/mods-available/xdebug.ini
+RUN a2enmod rewrite
+
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
+RUN adduser --disabled-password --gecos '' $user_name
+
+#RUN mkdir /var/www/files
+##RUN mkdir /var/www/files/logs/
+##RUN mkdir /var/www/files/session/
+##RUN chmod 777 -R /var/www/files
+
+
+CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
+

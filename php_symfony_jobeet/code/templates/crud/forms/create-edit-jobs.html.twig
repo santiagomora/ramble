@@ -1,0 +1,70 @@
+{% extends "crud/create-edit.html.twig" %}
+
+{% block edit_create_title %}
+    <h2>{{ isCreate ? "Creating new Job" : "Editing #{entityInstance.getJbName}" }}</h2>
+{% endblock %}
+
+{% block form %}
+    <div class="container-fluid">
+        {{ form_errors(form) }}
+        {{ form_start(form) }}
+        <div class="row justify-content-end">
+            <div class="col-md-6">
+                {{ form_row(form.jbLocation) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.jbExpiresAt) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.jbTitle) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.jbEmail) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_row(form.jbCompanyName) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.jbUrl) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.jbLogo) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_row(form.jbCategory) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.jbType) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_row(form.jbPosition) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.jbDescription) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.jbInstructions) }}
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-md-6 text-right">
+                {{ form_row(form.jbPublic) }}
+                {{ form_row(form.save) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block create_edit_form %}
+    {% form_theme form _self %}
+    {{ form(form) }}
+{% endblock %}

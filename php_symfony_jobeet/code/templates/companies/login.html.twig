@@ -1,0 +1,78 @@
+{% extends 'login-base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block navbar %}
+    <a class="navbar-brand d-inline" href="{{url('anonymous-crud-index')}}">
+        <h1 class="d-inline">
+            <strong>Jobeet for companies</strong>
+        </h1>
+    </a>
+    <br>
+    <h2 class="d-inline">Please sign in</h2>
+    <hr>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                            </div>
+                        {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="inputCoAmEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="coEmail" id="inputCoEmail" class="form-control" required autofocus>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-md-4 text-right">
+
+                    {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                    #}
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12 text-right">
+                    <a href="{{ path('company-register') }}">Click here</a> if you dont have an account, or
+                </div>
+            </div>
+            <div class="row justify-content-end mt-3">
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Sign in
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
