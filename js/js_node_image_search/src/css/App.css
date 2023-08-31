@@ -1,0 +1,46 @@
+
+.app{
+    margin-top:10vh;
+}
+
+.searchbox{
+    width:100%;
+    display:inline-block;
+    text-align:left;
+}
+
+.right{
+    text-align:right;
+}
+
+.left{
+    text-align:left;
+}
+
+.center{
+    text-align:center;
+}
+
+.iblock{
+    display:inline-block;
+}
+
+.smallwidth{
+    width:50px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.spadding{
+    padding:10px;
+}
+
+
+.svpadding{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.thirty{
+    width:30%;
+}
