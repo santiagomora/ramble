@@ -1,0 +1,51 @@
+<nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h1 class="nav-padding">
+                    <a href="{{url('anonymous-crud-index')}}">
+                        <strong>Jobeet</strong>
+                    </a>
+                </h1>
+            </div>
+            <div class="justify-content-end flex-column d-flex col-md-8 text-right align-bottom">
+                <p class="m-0 pb-2">You can search by <strong>company name</strong>, <strong>category name</strong>, <strong>job title</strong>, <strong>position</strong> or <strong>type</strong>.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="nav align-items-baseline d-flex">
+                    <li class="list-group-item nav-padding">
+                        <a href="/" class="nav-link p-0">Jobs</a>
+                    </li>
+                    <li class="list-group-item nav-padding">
+                        <a href="/categories" class="nav-link p-0">Categories</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-8 text-right">
+                <form class="my-2 my-lg-0" action="/" id="searchForm">
+                    <input id="searchInput"
+                           class="w-25 d-inline form-control mr-sm-2"
+                           type="search"
+                           placeholder="Search for jobs" aria-label="Search"
+                           value = "{{ isSearchResult is defined ? isSearchResult : "" }}"
+                    >
+                    <button style="padding:5.5px 13px " class="btn btn-primary my-2 my-sm-0" type="submit">
+                        Search
+                    </button>
+                    <a href="{{ path("anonymous-crud-create",{'slug':'jobs'}) }}"
+                       class="btn mx-2 btn-warning my-2 my-sm-0 d-inline">
+                        Post a Job
+                    </a>
+                    <a class="btn btn-success my-sm-0 d-inline"
+                       href="{{ path('company-login') }}">
+                        Login
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+

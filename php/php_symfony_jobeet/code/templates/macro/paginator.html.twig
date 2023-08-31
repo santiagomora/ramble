@@ -1,0 +1,33 @@
+{% macro paginator( data,limit,currentPage ) %}
+    {% set currentUrl =app.request.uri %}
+    {% from "macro/modal.html.twig" import modal %}
+    <div class="row">
+        <div class="col-md-5 text-left my-1">
+            <strong>Showing
+                <input style="width:60px" type="number" id="paginationLimit" value="{{ limit }}">
+                Results
+            </strong>
+        </div>
+        <div class="col-md-7 text-right my-3">
+            {% set pageReg = '/(page=\\d+&limit=\\d+|limit=\\d+&page=\\d+)/' %}
+            {% for i in 1..(data.count()/limit)|round(0,'ceil') %}
+                {% if i|number_format(0) is not same as(currentPage) %}
+                    {% set tp = currentUrl matches('/\\?/') ? '&' : '?' %}
+                    {% set query = "#{tp}page=#{i}&limit=#{limit}"%}
+                    <a class="pagination-item btn"
+                       style="color:var(--blue)"
+                       href={{ currentUrl matches(pageReg)
+                            ? replace(pageReg,query,currentUrl)
+                            : "#{currentUrl}#{query}"}}>
+                        <strong>{{ i }}</strong>
+                    </a>
+                {% else %}
+                    <p class="d-inline btn" id="currentPage" value="{{ i }}"><strong>{{ i }}</strong></p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-5">
+            To change results shown by page, press <strong>ENTER</strong> after editing the input
+        </div>
+    </div>
+{% endmacro paginator %}

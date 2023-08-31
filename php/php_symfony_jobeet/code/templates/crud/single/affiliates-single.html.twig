@@ -1,0 +1,34 @@
+{% extends "crud/single.html.twig" %}
+
+{% from "macro/table.html.twig" import table %}
+
+{% from "macro/actions.html.twig" import actions %}
+
+{% block single_title %}
+    <h2>{{ entityInstance.getAfName }}</h2>
+{% endblock %}
+
+{% block single_content %}
+    <div class="row my-5">
+        <div class="col-md-4">
+            <h5>Affiliate Admin</h5>
+            {{ entityInstance.getAfAdminName }}
+        </div>
+        <div class="col-md-4">
+            <h5>Affiliate Email</h5>
+            {{ entityInstance.getAfEmail }}
+        </div>
+        <div class="col-md-4">
+            <h5>Affiliate URL</h5>
+            {{ entityInstance.getAfUrl }}
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-12">
+            <h2>{{ extraData.title }}</h2>
+        </div>
+        <div class="col-md-12">
+            {{ table(extraData.data,extraData,extraData.actions) }}
+        </div>
+    </div>
+{% endblock %}

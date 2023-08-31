@@ -1,0 +1,83 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{% block javascripts %}
+    <script type="text/javascript">
+        function checkFiltersOnPaginationChange(){
+            const filters = $("#job_filter_form select")||[];
+            return [...filters].filter(
+                e  => e.value
+            )
+        }
+
+        function addPaginationHandlers()
+        {
+            const paginationLimit = $("#paginationLimit");
+            if(paginationLimit)
+            {
+                paginationLimit.on('keyup',function(e){
+                    e.preventDefault()
+                    let currentPage;
+                    let queryString;
+                    let hrefMatch;
+                    let href;
+                    let reg = /page=\d+\&limit=\d+/gi;
+                    if(this.value && e.keyCode===13)
+                    {
+                        href = window.location.href
+                        currentPage = $("#currentPage").attr('value');
+                        queryString = href.match(/\?/)
+                            ? `&page=${currentPage}&limit=${this.value}`
+                            : `?page=${currentPage}&limit=${this.value}`;
+                        hrefMatch = href.match(reg)
+                            ? href.replace(reg,queryString)
+                            : `${href}${queryString}`;
+                        window.location.replace(hrefMatch);
+                    }
+                })
+            }
+        }
+
+        function addFilterCheckerHandlerOnPaginationChange()
+        {
+            const paginationItems = $(".pagination-item");
+            if (paginationItems)
+            {
+                paginationItems.each(
+                    function()
+                    {
+                        this.onclick = e => {
+                            const activeFilters = checkFiltersOnPaginationChange();
+                            if (activeFilters.length>0)
+                            {
+                                console.log("culo");
+                                e.preventDefault()
+                                const jobFilter = $("form[name=job_filter_form]");
+                                jobFilter.attr("action",$(this).attr("href"));
+                                jobFilter.submit();
+                            }
+                        }
+                    }
+                )
+            }
+
+        }
+        function addSearchHandler()
+        {
+            const searchForm = $("#searchForm");
+            if(searchForm)
+            {
+                searchForm.on('submit',function(e){
+                    e.preventDefault();
+                    const input = $("#searchInput").val();
+                    window.location.replace(`${window.location.origin}?search=${encodeURIComponent(input)}`);
+                })
+            }
+        }
+
+        window.onload = function(){
+            addSearchHandler();
+            addPaginationHandlers();
+            addFilterCheckerHandlerOnPaginationChange();
+        }
+    </script>
+{% endblock %}

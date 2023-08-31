@@ -1,0 +1,27 @@
+version: '2'
+services:
+  mariadb_desa:
+    image: 'bitnami/mariadb:latest'
+    ports:  # Ports to expose
+      - "3320:3306"
+    volumes:
+      - ./DB:/bitnami/mariadb/data
+      - './mdb_params/:/var/www/'
+    environment:
+      - 'ALLOW_EMPTY_PASSWORD=yes'
+  symfony4_desa:
+    build: ./docker/data/image/.
+    ports:
+      - '8091:80'
+      - '8092:8081'
+    volumes:
+      - './repos/:/var/www/html/'
+            #     - './repos/extras/:/var/www/html/extras/'
+      - './sym_params/php.ini:/etc/php/7.2/apache2/php.ini'
+      - './sym_params/env:/var/www/html/proyecto/.env'
+      - './hosts:/etc/hosts'
+      - './docker/data/home:/home/santiagomora/:'
+      - './docker/data/etc/:/etc/apache2/sites-enabled/'
+      - './files/:/var/www/files/'
+    env_file:
+      - ./docker/data/apache.env

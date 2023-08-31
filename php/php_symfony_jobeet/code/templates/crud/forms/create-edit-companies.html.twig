@@ -1,0 +1,50 @@
+{% extends "crud/create-edit.html.twig" %}
+
+{% block edit_create_title %}
+    <h2>{{ isCreate ? "Creating new Company" : "Editing #{entityInstance.getCoName}" }}</h2>
+{% endblock %}
+
+{% block form %}
+    <div class="container-fluid">
+        {{ form_errors(form) }}
+        {{ form_start(form) }}
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    {{ form_row(form.coName) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.coEmail) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_row(form.coLogo) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.coPassword) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.coAdmin) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-6 text-right">
+                    {{ form_row(form.coUpdatedAt,{'attr':{'class':'justify-content-end'}}) }}
+                </div>
+                <div class="col-md-6 offset-md-6 text-right">
+                    {{ form_row(form.coCreatedAt,{'attr':{'class':'justify-content-end'}}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    {{ form_row(form.save) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block create_edit_form %}
+    {% form_theme form _self %}
+    {{ form(form) }}
+{% endblock %}
