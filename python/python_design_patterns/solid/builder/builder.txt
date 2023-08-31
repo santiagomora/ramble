@@ -1,0 +1,12 @@
+Why is builder required?
+
+    - Some objects are simple and are created in a single initializer call
+    
+    - Some objects require a lot of ceremony to be created
+    
+    - Having an object with 10 initializer arguments is not productive
+    
+    - We opt for piecewise object constructed: the builder provides an API for constructing an object step-by-step
+    
+    - When piecewise object construction is complicated, builder provides an API for doing it succintly
+

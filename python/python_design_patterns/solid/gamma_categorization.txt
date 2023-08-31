@@ -1,0 +1,18 @@
+Design patterns are typically split into three categories
+    
+    - Creational Patterns: deals with creation (construction) of objects
+
+        - Object gets created behind the scenes: Explicit (calling constructor directly) vs. implicit (Dependency Injection, Reflection, etc)
+        - Processes take care of object initialization of objects before they are ready to use: Wholesale (single statement to initialize object) vs. piecewise (generally object initialization is more complicated so there is this step-by-step approach, several statements are needed before object is ready to use)
+    
+    - Structural Patterns: Concerned with structure (class members) of classes, class interface adherence, etc.
+            
+        - Many patterns are wrappers that mimic the underlying class interface
+        
+        - Stress the importance of good API design: making the interface as convenient to use as possible
+        
+    - Behavioral Design Patterns: They are all different, no central theme
+    
+        - they solve a particular problem with a particular set of concerns
+        
+        

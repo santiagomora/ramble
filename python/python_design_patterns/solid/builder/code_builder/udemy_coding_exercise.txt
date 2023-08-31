@@ -1,0 +1,93 @@
+class Indentable:
+    def __init__(self):
+        self.offset = 0
+    def indent(self):
+        return self.offset*'  '
+
+class Appendable:
+    def __init__(self):
+        self.members = []
+    def append(self,memb):
+        raise NotImplemented
+
+class Searchable(Appendable):
+    def __init__(self,search_by):
+        Appendable.__init__(self)
+        self.search_by = search_by
+    def __getitem__(self,what):
+        if isinstance(what,int):
+            return self.members[what]
+        elif isinstance(what,str):
+            for memb in self.members: 
+                if getattr(memb,self.search_by) == what: 
+                    return memb
+        return None
+
+class Fields(Searchable):
+    class Field:
+        def __init__(self,context,_type,name):
+            self.context = context
+            self._type = _type
+            self.name = name
+        def __str__(self):
+            return '{0}.{1} = {2}'.format(self.context,self.name,self._type)
+        @staticmethod
+        def instance_from(context,name,_type):
+            return Fields.Field(context,name,_type)
+    def __init__(self,context):
+        Searchable.__init__(self,'name')
+        self.context = context
+    def append(self,_type,name):
+        self.members.append(self.Field.instance_from(self.context,_type,name))
+        
+class Methods(Indentable,Searchable):
+    class Method(Indentable,Appendable): 
+        def __init__(self,name,*args):
+            Appendable.__init__(self)
+            Indentable.__init__(self)
+            self.name = name
+            self.args = args
+        def append(self,memb):
+            self.members.append(memb)
+        def __str__(self):
+            args = ', '.join( str(arg) for arg in self.args )
+            res = '{0}def {1}({2}):\n'.format(self.indent(),self.name,args)
+            self.offset+=1
+            return res+'\n'.join('{0}{1}'.format(self.indent(),memb) for memb in self.members)
+        @staticmethod
+        def instance_from(name,*args):
+            return Methods.Method(name,*args)
+    def __init__(self):
+        Searchable.__init__(self,'name')
+        Indentable.__init__(self)
+    def append(self,name,*args):
+        self.members.append(self.Method.instance_from(name,*args))
+    def __str__(self):
+        if len(self.members) == 0:
+            return '{0}pass'.format(self.indent())
+        for memb in self.members: 
+            memb.offset = self.offset
+        return '\n'.join(str(memb) for memb in self.members)
+
+class CodeBuilder(Indentable):
+    def __init__(self, root_name):
+        Indentable.__init__(self)
+        self.root_name = root_name
+        self.fields = Fields('self')
+        self.methods = Methods()
+
+    def add_field(self, name, _type):
+        if self.methods['__init__'] is None: 
+            self.methods.append('__init__','self')
+        self.fields.append(_type,name)
+        self.methods['__init__'].append(self.fields[name])
+        return self
+
+    def __str__(self):
+        res = '{0}class {1}:'.format(self.indent(),self.root_name)
+        self.offset += 1
+        self.methods.offset = self.offset
+        return '{0}\n{1}'.format(res,self.methods)
+        
+cb = CodeBuilder('Person')
+print(cb)
