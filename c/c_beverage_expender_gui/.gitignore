@@ -1,0 +1,5 @@
+# Qt Creator
+*.pro.user
+*.o
+build*
+/interfaz/DB
