@@ -1,0 +1,61 @@
+[{
+	"id":1,
+	"name":"test 1",
+	"price": 5,
+	"size": "large",
+	"color":"blue"	
+},{
+	"id":2,
+	"name":"test 2",
+	"price": 1,
+	"size": "medium",
+	"color":"red"
+},{
+	"id":3,
+	"name":"test 3",
+	"price": 10,
+	"size": "small",
+	"color":"green"
+},{
+	"id":4,
+	"name":"test 4",
+	"price": 20,
+	"size": "small",
+	"color":"black"
+},{
+	"id":5,
+	"name":"test 5",
+	"price": 25,
+	"size": "medium",
+	"color":"white"
+},{
+	"id":6,
+	"name":"test 6",
+	"price": 25,
+	"size": "medium",
+	"color":"yellow"
+},{
+	"id":7,
+	"name":"test 7",
+	"price": 17,
+	"size": "large",
+	"color":"blue"
+},{
+	"id":8,
+	"name":"test 8",
+	"price": 17,
+	"size": "large",
+	"color":"blue"
+},{
+	"id":9,
+	"name":"test 9",
+	"price": 9,
+	"size": "large",
+	"color":"green"
+},{
+	"id":10,
+	"name":"test 10",
+	"price": 1,
+	"size": "large",
+	"color":"yellow"
+}]

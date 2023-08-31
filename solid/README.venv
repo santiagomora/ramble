@@ -1,0 +1,18 @@
+Configuring the virtual environment 
+===================================
+# virtual environment is isolated from filesystem, and os usual installing directories
+sudo apt-get install python3-venv
+python3 -m venv venv/
+source venv/bin/activate 
+deactivate #deactivation script
+# can install packages with pip that will stay inside the virtual environment
+pip install %packagename
+#requirement file:
+#command that shows the current venv requirements
+pip freeze 
+#to save these requirements, use a special requirements.txt file
+pip freeze > requirements.txt
+#other users can replicate our virtual environment using this requirements.txt file
+#venv folder not usually included in repo
+#reading requirements file
+pip install -r requirements.txt
