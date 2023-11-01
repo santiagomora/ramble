@@ -1,0 +1,39 @@
+<div class="modal-content" [ngStyle]="{'max-width':'60%'}">
+  <div *ngIf="currentRecipe; else noRecipeFound">
+    <div class="container-fluid pb-3">
+      <div class="row modal-header mb-3">
+        <div class="col px-0">
+            <h4 class="m-0">Edit recipe: <a routerLink="/recipes/{{currentRecipe._id}}">{{currentRecipe.name}}</a></h4>
+        </div>
+        <div class="col p-0 text-right">
+            <button type="button" 
+                class="btn btn-danger font-weight-bolder px-2 py-0" 
+                (click)="close()" >
+                &times;
+            </button>
+        </div>
+      </div>
+      <div class="col-12 p-0">
+        <message-outlet-component outletType="inComponent">
+        </message-outlet-component>
+        <conditional-component
+          [condition]="currentRecipe&&!loading">
+          <ng-template conditionalContent>
+            <recipe-form 
+              [currentRecipe]="currentRecipe"
+              [isEdit]="true"
+              [submitHandler]="editRecipe">
+            </recipe-form>
+          </ng-template> 
+        </conditional-component>
+      </div>
+    </div>
+  </div>
+  <ng-template #noRecipeFound>
+    <div class="container-fluid pb-2">
+      <div class="col-12">
+        <h3 class="font-weight-bolder">No recipe found.</h3>
+      </div>
+    </div>
+  </ng-template>
+</div>

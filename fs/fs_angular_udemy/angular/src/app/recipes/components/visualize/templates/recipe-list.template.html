@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-0">recipes</h2>
+      <hr class="my-2">
+    </div>
+  </div>
+  <conditional-component
+    [condition]="recipes && !loading">
+    <ng-template conditionalContent>
+      <div class="row" 
+        *ngIf="recipes.length===0; else paginated">
+        <div class="col-12">
+          No recipes found
+        </div>
+      </div>
+      <ng-template #paginated>
+        <pagination-component 
+          [fetchData]="fetchData"
+          [pagination]="pagination">
+          <ng-template paginatedContent>
+            <div 
+              *ngFor="let listItem of recipes"
+              class="row">
+              <div class="col-12 container-fluid">
+                <div class="row">
+                  <div class="col">
+                    <a [routerLink]="listItem.data._id">
+                      <h3 class="font-weight-bolder">{{listItem.data.name}}</h3>
+                    </a>
+                  </div>
+                  <div class="col-auto text-right">
+                    <action-component 
+                        *ngFor="let a of listItem.actions(this)['crud']"
+                        [actionDescriptor]="a">
+                    </action-component> 
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <ul class="horizontal-list-group text-right">
+                  <li 
+                    class="list-group-item d-inline-block py-0 px-1"
+                    *ngFor="let ing of listItem.data.ingredients">
+                    <strong>{{ing.item.data.name}}</strong>
+                    &times;
+                    {{ing.quantity}}
+                    {{ing.item.data.unit.data.longName}}
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12">
+                {{listItem.data.description.slice(0,400)}}...
+              </div>
+              <div class="col-12">
+                <hr/>
+              </div>
+            </div>
+          </ng-template>
+        </pagination-component>
+      </ng-template>
+    </ng-template>
+  </conditional-component>
+</div>
